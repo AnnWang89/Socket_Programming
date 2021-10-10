@@ -2,7 +2,7 @@ package socketprogramming;
 import java.net.*;
 import java.io.*;
 /**
-* ²q¼Æ¦r«È¤áºİ
+* çŒœæ•¸å­—å®¢æˆ¶ç«¯
 */
 public class TCPClient {
 	public static void main(String[] args) {
@@ -12,63 +12,63 @@ public class TCPClient {
 			BufferedReader br = null;
 			byte[] data = new byte[2];
 			try{
-//«Ø¥ß³s±µ
+//å»ºç«‹é€£æ¥
 				socket = new Socket("127.0.0.1",10001);
-//µo°e¼Æ¾Ú
+//ç™¼é€æ•¸æ“š
 				os= socket.getOutputStream();
-//Åª¨ú¤ÏõX¼Æ¾Ú
+//è®€å–åé¥‹æ•¸æ“š
 				is = socket.getInputStream();
-//Áä½L¿é¤J¬y
+//éµç›¤è¼¸å…¥æµ
 				br = new BufferedReader(new InputStreamReader(System.in));
-//¦h¦¸¿é¤J
+//å¤šæ¬¡è¼¸å…¥
 				while(true){
-					System.out.println("½Ğ¿é¤J¼Æ¦r¡G");
-//±µ¦¬¿é¤J
+					System.out.println("è«‹è¼¸å…¥æ•¸å­—ï¼š");
+//æ¥æ”¶è¼¸å…¥
 					String s = br.readLine();
 
-//µ²§ô±ø¥ó
+//çµæŸæ¢ä»¶
 					if(s.equals("quit")){
 						os.write("quit".getBytes());
 						break;
 					}
-//®ÕÅç¿é¤J¬O§_¦Xªk
+//æ ¡é©—è¼¸å…¥æ˜¯å¦åˆæ³•
 					boolean b = true;
 					try{
 						Integer.parseInt(s);
 					}catch(Exception e){
 						b = false;
 					}
-					if(b){ //¿é¤J¦Xªk
-//µo°e¼Æ¾Ú
+					if(b){ //è¼¸å…¥åˆæ³•
+//ç™¼é€æ•¸æ“š
 						os.write(s.getBytes());
-//±µ¦¬¤ÏõX
+//æ¥æ”¶åé¥‹
 						is.read(data);
-//§PÂ_
+//åˆ¤æ–·
 						switch(data[0]){
 						case 0:
-							System.out.println("¬Ûµ¥¡I¯¬¶P§A¡I");
+							System.out.println("ç›¸ç­‰ï¼ç¥è³€ä½ ï¼");
 							break;
 						case 1:
-							System.out.println("¤j¤F¡I");
+							System.out.println("å¤§äº†ï¼");
 							break;
 						case 2:
-							System.out.println("¤p¤F¡I");
+							System.out.println("å°äº†ï¼");
 							break;
 						default:
-							System.out.println("¨ä¥¦¿ù»~¡I");
+							System.out.println("å…¶å®ƒéŒ¯èª¤ï¼");
 						}
-//´£¥Ü²qªº¦¸¼Æ
-						System.out.println("§A¤w¸g²q¤F"+ data[1] +"¦¸¡I");
-//§PÂ_¦¸¼Æ¬O§_¹F¨ì5¦¸
+//æç¤ºçŒœçš„æ¬¡æ•¸
+						System.out.println("ä½ å·²ç¶“çŒœäº†"+ data[1] +"æ¬¡ï¼");
+//åˆ¤æ–·æ¬¡æ•¸æ˜¯å¦é”åˆ°5æ¬¡
 						if(data[1] >= 5){
-							System.out.println("§A±¾¤F¡I");
-	//µ¹¦øªA¾¹ºİ½uµ{Ãö³¬ªº¾÷·|
+							System.out.println("ä½ æ›äº†ï¼");
+	//çµ¦ä¼ºæœå™¨ç«¯ç·šç¨‹é—œé–‰çš„æ©Ÿæœƒ
 							os.write("quit".getBytes());
-	//µ²§ô«È¤áºİµ{§Ç
+	//çµæŸå®¢æˆ¶ç«¯ç¨‹åº
 							break;
 						}
-					}else{ //¿é¤J¿ù»~
-						System.out.println("¿é¤J¿ù»~¡I");
+					}else{ //è¼¸å…¥éŒ¯èª¤
+						System.out.println("è¼¸å…¥éŒ¯èª¤ï¼");
 					}
 				}
 				
@@ -76,7 +76,7 @@ public class TCPClient {
 				e.printStackTrace();
 			}finally{
 				try{
-//Ãö³¬³s±µ
+//é—œé–‰é€£æ¥
 					br.close();
 					is.close();
 					os.close();

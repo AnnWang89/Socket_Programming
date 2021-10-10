@@ -43,15 +43,15 @@ public class  Client extends Application{
 	public static String  line;
 	
     public static void main(String[] args) throws IOException {
-        //«Ø¥ß³s½u«ü©wIp©M°ğªºsocket
+        //å»ºç«‹é€£ç·šæŒ‡å®šIpå’ŒåŸ çš„socket
         socket = new Socket("127.0.0.1",5200);
         
         
-        //Àò¨ú¨t²Î¼Ğ·Ç¿é¤J¬y
+        //ç²å–ç³»çµ±æ¨™æº–è¼¸å…¥æµ
         reader = new BufferedReader(new InputStreamReader(System.in));
         out = new PrintWriter(socket.getOutputStream());
         in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-        //«Ø¥ß¤@­Ó°õ¦æºü¥Î©óÅª¨ú¦øªA¾¹ªº¸ê°T
+        //å»ºç«‹ä¸€å€‹åŸ·è¡Œç·’ç”¨æ–¼è®€å–ä¼ºæœå™¨çš„è³‡è¨Š
         new Thread(new Runnable() {
             @Override
             public void run() {
@@ -65,13 +65,13 @@ public class  Client extends Application{
             }
         }).start();
         launch(args);
-        //¼g¸ê°Tµ¹«È¤áºİ
+        //å¯«è³‡è¨Šçµ¦å®¢æˆ¶ç«¯
         line = reader.readLine();
         while (!"end".equalsIgnoreCase(line)){
-            //±N±qÁä½LÀò¨úªº¸ê°Tµ¹¨ì¦øªA¾¹
+            //å°‡å¾éµç›¤ç²å–çš„è³‡è¨Šçµ¦åˆ°ä¼ºæœå™¨
             out.println(line);
             out.flush();
-            //Åã¥Ü¿é¤Jªº¸ê°T
+            //é¡¯ç¤ºè¼¸å…¥çš„è³‡è¨Š
             line = reader.readLine();
         }
         out.close();
